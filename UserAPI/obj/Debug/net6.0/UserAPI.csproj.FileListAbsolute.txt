@@ -1,0 +1,100 @@
+D:\Capstone Project\CapstoneAPI\UserAPI\bin\Debug\net6.0\appsettings.Development.json
+D:\Capstone Project\CapstoneAPI\UserAPI\bin\Debug\net6.0\appsettings.json
+D:\Capstone Project\CapstoneAPI\UserAPI\bin\Debug\net6.0\UserAPI.exe
+D:\Capstone Project\CapstoneAPI\UserAPI\bin\Debug\net6.0\UserAPI.deps.json
+D:\Capstone Project\CapstoneAPI\UserAPI\bin\Debug\net6.0\UserAPI.runtimeconfig.json
+D:\Capstone Project\CapstoneAPI\UserAPI\bin\Debug\net6.0\UserAPI.dll
+D:\Capstone Project\CapstoneAPI\UserAPI\bin\Debug\net6.0\UserAPI.pdb
+D:\Capstone Project\CapstoneAPI\UserAPI\bin\Debug\net6.0\AWSSDK.Core.dll
+D:\Capstone Project\CapstoneAPI\UserAPI\bin\Debug\net6.0\AWSSDK.SecurityToken.dll
+D:\Capstone Project\CapstoneAPI\UserAPI\bin\Debug\net6.0\DnsClient.dll
+D:\Capstone Project\CapstoneAPI\UserAPI\bin\Debug\net6.0\Microsoft.OpenApi.dll
+D:\Capstone Project\CapstoneAPI\UserAPI\bin\Debug\net6.0\MongoDB.Bson.dll
+D:\Capstone Project\CapstoneAPI\UserAPI\bin\Debug\net6.0\MongoDB.Driver.dll
+D:\Capstone Project\CapstoneAPI\UserAPI\bin\Debug\net6.0\MongoDB.Driver.Core.dll
+D:\Capstone Project\CapstoneAPI\UserAPI\bin\Debug\net6.0\MongoDB.Libmongocrypt.dll
+D:\Capstone Project\CapstoneAPI\UserAPI\bin\Debug\net6.0\SharpCompress.dll
+D:\Capstone Project\CapstoneAPI\UserAPI\bin\Debug\net6.0\Snappier.dll
+D:\Capstone Project\CapstoneAPI\UserAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Capstone Project\CapstoneAPI\UserAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Capstone Project\CapstoneAPI\UserAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Capstone Project\CapstoneAPI\UserAPI\bin\Debug\net6.0\ZstdSharp.dll
+D:\Capstone Project\CapstoneAPI\UserAPI\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
+D:\Capstone Project\CapstoneAPI\UserAPI\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
+D:\Capstone Project\CapstoneAPI\UserAPI\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
+D:\Capstone Project\CapstoneAPI\UserAPI\obj\Debug\net6.0\UserAPI.csproj.AssemblyReference.cache
+D:\Capstone Project\CapstoneAPI\UserAPI\obj\Debug\net6.0\UserAPI.GeneratedMSBuildEditorConfig.editorconfig
+D:\Capstone Project\CapstoneAPI\UserAPI\obj\Debug\net6.0\UserAPI.AssemblyInfoInputs.cache
+D:\Capstone Project\CapstoneAPI\UserAPI\obj\Debug\net6.0\UserAPI.AssemblyInfo.cs
+D:\Capstone Project\CapstoneAPI\UserAPI\obj\Debug\net6.0\UserAPI.csproj.CoreCompileInputs.cache
+D:\Capstone Project\CapstoneAPI\UserAPI\obj\Debug\net6.0\UserAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\Capstone Project\CapstoneAPI\UserAPI\obj\Debug\net6.0\UserAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\Capstone Project\CapstoneAPI\UserAPI\obj\Debug\net6.0\staticwebassets\msbuild.UserAPI.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Capstone Project\CapstoneAPI\UserAPI\obj\Debug\net6.0\staticwebassets\msbuild.build.UserAPI.props
+D:\Capstone Project\CapstoneAPI\UserAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.UserAPI.props
+D:\Capstone Project\CapstoneAPI\UserAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.UserAPI.props
+D:\Capstone Project\CapstoneAPI\UserAPI\obj\Debug\net6.0\staticwebassets.pack.json
+D:\Capstone Project\CapstoneAPI\UserAPI\obj\Debug\net6.0\staticwebassets.build.json
+D:\Capstone Project\CapstoneAPI\UserAPI\obj\Debug\net6.0\staticwebassets.development.json
+D:\Capstone Project\CapstoneAPI\UserAPI\obj\Debug\net6.0\scopedcss\bundle\UserAPI.styles.css
+D:\Capstone Project\CapstoneAPI\UserAPI\obj\Debug\net6.0\UserAPI.csproj.CopyComplete
+D:\Capstone Project\CapstoneAPI\UserAPI\obj\Debug\net6.0\UserAPI.dll
+D:\Capstone Project\CapstoneAPI\UserAPI\obj\Debug\net6.0\refint\UserAPI.dll
+D:\Capstone Project\CapstoneAPI\UserAPI\obj\Debug\net6.0\UserAPI.pdb
+D:\Capstone Project\CapstoneAPI\UserAPI\obj\Debug\net6.0\UserAPI.genruntimeconfig.cache
+D:\Capstone Project\CapstoneAPI\UserAPI\obj\Debug\net6.0\ref\UserAPI.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\obj\Debug\net6.0\UserAPI.csproj.AssemblyReference.cache
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\obj\Debug\net6.0\UserAPI.GeneratedMSBuildEditorConfig.editorconfig
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\obj\Debug\net6.0\UserAPI.AssemblyInfoInputs.cache
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\obj\Debug\net6.0\UserAPI.AssemblyInfo.cs
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\obj\Debug\net6.0\UserAPI.csproj.CoreCompileInputs.cache
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\obj\Debug\net6.0\UserAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\obj\Debug\net6.0\UserAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\obj\Debug\net6.0\UserAPI.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\obj\Debug\net6.0\refint\UserAPI.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\obj\Debug\net6.0\UserAPI.pdb
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\appsettings.Development.json
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\appsettings.json
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\UserAPI.exe
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\UserAPI.deps.json
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\UserAPI.runtimeconfig.json
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\UserAPI.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\UserAPI.pdb
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\AWSSDK.Core.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\AWSSDK.SecurityToken.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\DnsClient.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\Microsoft.OpenApi.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\MongoDB.Bson.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\MongoDB.Driver.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\MongoDB.Driver.Core.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\MongoDB.Libmongocrypt.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\SharpCompress.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\Snappier.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\ZstdSharp.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\obj\Debug\net6.0\staticwebassets\msbuild.UserAPI.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\obj\Debug\net6.0\staticwebassets\msbuild.build.UserAPI.props
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.UserAPI.props
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.UserAPI.props
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\obj\Debug\net6.0\staticwebassets.pack.json
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\obj\Debug\net6.0\staticwebassets.build.json
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\obj\Debug\net6.0\staticwebassets.development.json
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\obj\Debug\net6.0\scopedcss\bundle\UserAPI.styles.css
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\obj\Debug\net6.0\UserAPI.csproj.CopyComplete
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\obj\Debug\net6.0\UserAPI.genruntimeconfig.cache
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\obj\Debug\net6.0\ref\UserAPI.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\Consul.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\UserAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll

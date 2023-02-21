@@ -1,0 +1,14 @@
+version: '3.5'
+
+services:
+  userservice:
+    image: sidneyteo/userapi
+    ports:
+      - "5000:80"
+    environment:
+      - Mongo_DB=mongodb://mongodb_user:27017
+
+  mongodb_user:
+    image: mongo
+    ports:
+      - "27017:27017"
