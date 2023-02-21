@@ -44,8 +44,8 @@ namespace UserAPI.Repository
                 .Set(x => x.Password, user.Password)
                 .Set(x => x.Phone, user.Phone)
                 .Set(x => x.Gender, user.Gender)
-                .Set(x => x.DateOfBirth, user.DateOfBirth)
-                .Set(x => x.ProfilePic, user.ProfilePic);
+                .Set(x => x.DateOfBirth, user.DateOfBirth);
+                //.Set(x => x.ProfilePic, user.ProfilePic);
             db.Users.UpdateOne(filter, update);
         }
     }

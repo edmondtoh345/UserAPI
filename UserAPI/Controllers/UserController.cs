@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
 using UserAPI.Filters;
 using UserAPI.Models;
 using UserAPI.Services;
@@ -27,6 +31,8 @@ namespace UserAPI.Controllers
         public IActionResult Register(User user)
         {
             service.Register(user);
+            // var message = JsonConvert.SerializeObject("message")
+            
             return StatusCode(201, new {message="User Registered Successfully!", status ="201"});
         }
 
@@ -37,6 +43,29 @@ namespace UserAPI.Controllers
         {
             service.Login(user.Email, user.Password);
             return Ok(token.GenerateToken(user.Email));
+        }
+
+        // To Authenticate the Token
+
+        [HttpPost("isauthenticated")]
+        public IActionResult IsAuthenticated()
+        {
+            string token = Request.Headers.Authorization;
+            TokenValidationParameters validationParameters = new TokenValidationParameters()
+            {
+                ValidAudience = "userapi",
+                ValidIssuer = "authapi",
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("code_crusaders_secret_key_for_user"))
+            };
+            JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
+            SecurityToken securitytoken;
+            if (handler.CanReadToken(token))
+            {
+                var user = handler.ValidateToken(token, validationParameters, out securitytoken);
+                return Ok(new { message = "Valid" });
+            }
+            return StatusCode(401, new {message = "Error", status = "401"});
         }
 
         // For User and Admin to update user details
