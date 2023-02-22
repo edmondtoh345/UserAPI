@@ -1,4 +1,6 @@
 using FavouriteAPI.Models;
+using FavouriteAPI.Repository;
+using FavouriteAPI.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace FavouriteAPI
@@ -11,6 +13,11 @@ namespace FavouriteAPI
 
             // Add services to the container.
 
+            builder.Services.AddControllers();
+            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+
             var con = Environment.GetEnvironmentVariable("SQL_DB");
             if (con == null)
             {
@@ -21,10 +28,8 @@ namespace FavouriteAPI
                 builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(con));
             }
 
-            builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<IFavouriteRepository, FavouriteRepository>();
+            builder.Services.AddScoped<IFavouriteService, FavouriteService>();
 
             var app = builder.Build();
 

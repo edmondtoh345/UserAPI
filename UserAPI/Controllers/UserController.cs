@@ -19,11 +19,13 @@ namespace UserAPI.Controllers
         private readonly IAdminService admin;
         private readonly IUserService service;
         private readonly ITokenGeneratorService token;
+        private readonly ITokenAuthenticator authenticator;
         public UserController(IAdminService admin, IUserService service, ITokenGeneratorService token)
         {
             this.admin = admin;
             this.service = service;
             this.token = token;
+            this.authenticator = authenticator;
         }
 
         // For User to register
@@ -33,7 +35,7 @@ namespace UserAPI.Controllers
             service.Register(user);
             // var message = JsonConvert.SerializeObject("message")
             
-            return StatusCode(201, new {message="User Registered Successfully!", status ="201"});
+            return StatusCode(201, new {message="User registered successfully!", status ="201"});
         }
 
         // For User and Admin to login
@@ -50,22 +52,16 @@ namespace UserAPI.Controllers
         [HttpPost("isauthenticated")]
         public IActionResult IsAuthenticated()
         {
-            string token = Request.Headers.Authorization;
-            TokenValidationParameters validationParameters = new TokenValidationParameters()
+            var authorizationHeader = Request.Headers["Authorization"];
+            if (authorizationHeader.ToString().StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
             {
-                ValidAudience = "userapi",
-                ValidIssuer = "authapi",
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("code_crusaders_secret_key_for_user"))
-            };
-            JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
-            SecurityToken securitytoken;
-            if (handler.CanReadToken(token))
-            {
-                var user = handler.ValidateToken(token, validationParameters, out securitytoken);
-                return Ok(new { message = "Valid" });
+                var token = authorizationHeader.ToString().Substring("Bearer ".Length).Trim();
+                if (authenticator.Authenticate(token))
+                {
+                    return Ok(true);
+                }
             }
-            return StatusCode(401, new {message = "Error", status = "401"});
+            return Unauthorized(false);
         }
 
         // For User and Admin to update user details
