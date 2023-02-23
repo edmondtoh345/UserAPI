@@ -27,12 +27,21 @@ namespace UserAPI.Repository
             return user;
         }
 
-        public void ResetPassword(string email, User user)
+        public Cred ResetPassword(string email)
         {
-            var filter = Builders<User>.Filter.Where(x => x.Email == email);
+            /*var filter = Builders<User>.Filter.Where(x => x.Email == email);
             var update = Builders<User>.Update
                 .Set(x => x.Password, user.Password);
+            db.Users.UpdateOne(filter, update);*/
+
+            Cred c = new Cred();
+            var filter = Builders<User>.Filter.Where(x => x.Email == email);
+            c.Email = email;
+            c.Password = Guid.NewGuid().ToString().Substring(0,13);
+            var update = Builders<User>.Update
+                .Set(x => x.Password, c.Password);
             db.Users.UpdateOne(filter, update);
+            return c;
         }
 
         public void UpdateUser(string email, User user)

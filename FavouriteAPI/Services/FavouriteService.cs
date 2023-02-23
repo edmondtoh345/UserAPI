@@ -19,12 +19,14 @@ namespace FavouriteAPI.Services
             {
                 throw new FavAlreadyExistsException($"Favourite with Name: {fav.FavName} already exists!");
             }
-            else if (repo.GetUserFavourites(email).Where(x => x.FavSource.Latitude == fav.FavSource.Latitude 
-            && x.FavSource.Longitude == fav.FavSource.Longitude 
-            && x.FavDestination.Latitude == fav.FavDestination.Latitude 
-            && x.FavDestination.Longitude == fav.FavDestination.Longitude).Any())
+            else if (repo.GetUserFavourites(email).Where(x => x.FavSource == fav.FavSource
+            && x.FavDestination == fav.FavDestination).Any())
             {
-                throw new FavAlreadyExistsException($"Favourite with same source and destination already exists!");
+                throw new FavAlreadyExistsException("Favourite with the same route already exists!");
+            }
+            else if (fav.FavSource == fav.FavDestination)
+            {
+                throw new FavAlreadyExistsException("Source and destination are the same!");
             }
             return repo.AddFav(email, fav);
         }
@@ -45,18 +47,18 @@ namespace FavouriteAPI.Services
 
         public int UpdateFav(string email, int id, Favourite fav)
         {
-            if (repo.GetUserFavourites(email).Where(x => x.FavName == fav.FavName).Any())
+            if(repo.GetUserFavourites(email).Where(x => x.FavName == fav.FavName).Any())
             {
                 throw new FavAlreadyExistsException($"Favourite with Name: {fav.FavName} already exists!");
             }
-            else if (repo.GetUserFavourites(email).Where(x => x.FavSource != null
-            && x.FavSource.Latitude == fav.FavSource.Latitude
-            && x.FavSource.Longitude == fav.FavSource.Longitude
-            && x.FavDestination != null
-            && x.FavDestination.Latitude == fav.FavDestination.Latitude
-            && x.FavDestination.Longitude == fav.FavDestination.Longitude).Any())
+            else if (repo.GetUserFavourites(email).Where(x => x.FavSource == fav.FavSource
+            && x.FavDestination == fav.FavDestination).Any())
             {
-                throw new FavAlreadyExistsException($"Favourite with same source and destination already exists!");
+                throw new FavAlreadyExistsException("Favourite with the same route already exists!");
+            }
+            else if (fav.FavSource == fav.FavDestination)
+            {
+                throw new FavAlreadyExistsException("Source and destination are the same!");
             }
             return repo.UpdateFav(email, id, fav);
         }

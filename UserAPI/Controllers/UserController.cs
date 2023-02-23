@@ -18,9 +18,9 @@ namespace UserAPI.Controllers
     {
         private readonly IAdminService admin;
         private readonly IUserService service;
-        private readonly ITokenGeneratorService token;
         private readonly ITokenAuthenticator authenticator;
-        public UserController(IAdminService admin, IUserService service, ITokenGeneratorService token)
+        private readonly ITokenGeneratorService token;
+        public UserController(IAdminService admin, IUserService service, ITokenAuthenticator authenticator, ITokenGeneratorService token)
         {
             this.admin = admin;
             this.service = service;
@@ -48,7 +48,6 @@ namespace UserAPI.Controllers
         }
 
         // To Authenticate the Token
-
         [HttpPost("isauthenticated")]
         public IActionResult IsAuthenticated()
         {
@@ -76,10 +75,10 @@ namespace UserAPI.Controllers
         // For User to reset password
         // [Authorize(Roles = "User")]
         [HttpPut("resetpassword")]
-        public IActionResult ResetPassword(string UserEmail, User user)
+        public IActionResult ResetPassword(string UserEmail)
         {
-            service.ResetPassword(UserEmail, user);
-            return Ok(new { message = "Password has been reset successfully!" });
+            service.ResetPassword(UserEmail);
+            return Ok(new { message = $"New password has been sent to {UserEmail}." });
         }
 
         // The below codes are for Administrator functions
@@ -112,6 +111,7 @@ namespace UserAPI.Controllers
 
         // For Admin to get all users
         // [Authorize(Roles = "Admin")]
+        [Authorize] // This is for testing purpose
         [HttpGet("users")]
         public IActionResult GetAllUsers()
         {

@@ -20,24 +20,8 @@ namespace FavouriteAPI.Repository
         public int DeleteFav(int id)
         {
             var d = db.Favourites.Find(id);
-            if (d != null)
-            {
-                DeleteLocations(d.FavSource, d.FavDestination);
-                db.Favourites.Remove(d);
-                return db.SaveChanges();
-            }
-            return 0;
-
-            /*if (d.FavSource != null)
-            {
-                db.Entry<Location>(d.FavSource).State = EntityState.Deleted;
-            }
-            if (d.FavDestination != null)
-            {
-                db.Entry<Location>(d.FavDestination).State = EntityState.Deleted;
-            }
             db.Favourites.Remove(d);
-            return db.SaveChanges();*/
+            return db.SaveChanges();
         }
 
         public Favourite GetFavByID(int id)
@@ -58,18 +42,6 @@ namespace FavouriteAPI.Repository
             u.FavDestination = fav.FavDestination;
             db.Entry<Favourite>(u).State = EntityState.Modified;
             return db.SaveChanges();
-        }
-
-        private void DeleteLocations(Location source, Location destination)
-        {
-            if (source != null && source.LocationID != null)
-            {
-                db.Locations.Remove(source);
-            }
-            if (destination != null && destination.LocationID != null)
-            {
-                db.Locations.Remove(destination);
-            }
         }
     }
 }

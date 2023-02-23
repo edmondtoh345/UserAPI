@@ -28,6 +28,7 @@ namespace UserAPI
             builder.Services.AddScoped<IUserRepository, UserRepository>();
 
             builder.Services.AddScoped<IAdminService, AdminService>();
+            builder.Services.AddScoped<ITokenAuthenticator, TokenAuthenticator>();
             builder.Services.AddScoped<ITokenGeneratorService, TokenGeneratorService>();
             builder.Services.AddScoped<IUserService, UserService>();
 

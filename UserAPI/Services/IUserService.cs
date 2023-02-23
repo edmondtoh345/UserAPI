@@ -7,6 +7,6 @@ namespace UserAPI.Services
         User Register (User user);
         bool Login (string email, string password);
         void UpdateUser (string email, User user);
-        void ResetPassword (string email, User user);
+        Cred ResetPassword (string email);
     }
 }

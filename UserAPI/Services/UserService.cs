@@ -34,9 +34,13 @@ namespace UserAPI.Services
             return repo.Register(user);
         }
 
-        public void ResetPassword(string email, User user)
+        public Cred ResetPassword(string email)
         {
-            repo.ResetPassword(email, user);
+            if (repo.GetUserByEmail(email) == null)
+            {
+                throw new UserNotFoundException($"User with Email: {email} does not exists!");
+            }
+            return repo.ResetPassword(email);
         }
 
         public void UpdateUser(string email, User user)
