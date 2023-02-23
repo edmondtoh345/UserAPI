@@ -111,7 +111,7 @@ namespace UserAPI.Controllers
 
         // For Admin to get all users
         // [Authorize(Roles = "Admin")]
-        [Authorize] // This is for testing purpose
+        // [Authorize] // This is for testing purpose
         [HttpGet("users")]
         public IActionResult GetAllUsers()
         {

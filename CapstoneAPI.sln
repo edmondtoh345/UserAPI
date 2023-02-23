@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserAPI", "UserAPI\UserAPI.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIGateway", "APIGateway\APIGateway.csproj", "{222FDCAA-6064-4D15-BDB3-0C1C2560750B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FavouriteAPI", "FavouriteAPI\FavouriteAPI.csproj", "{19C92D06-B115-4F0A-8C8E-B091271F0761}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FavouriteAPI", "FavouriteAPI\FavouriteAPI.csproj", "{19C92D06-B115-4F0A-8C8E-B091271F0761}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailAPI", "EmailAPI\EmailAPI.csproj", "{FAE48B6B-CCCC-4EF1-9F2D-9AC394B2333A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{19C92D06-B115-4F0A-8C8E-B091271F0761}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19C92D06-B115-4F0A-8C8E-B091271F0761}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19C92D06-B115-4F0A-8C8E-B091271F0761}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAE48B6B-CCCC-4EF1-9F2D-9AC394B2333A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAE48B6B-CCCC-4EF1-9F2D-9AC394B2333A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAE48B6B-CCCC-4EF1-9F2D-9AC394B2333A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAE48B6B-CCCC-4EF1-9F2D-9AC394B2333A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

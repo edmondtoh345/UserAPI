@@ -21,7 +21,6 @@ namespace UserAPI.Models
         }
 
         public IMongoCollection<User> Users => db.GetCollection<User>("Users");
-        public IMongoCollection<Favourite> Favourites => db.GetCollection<Favourite>("Favourites");
         public IMongoCollection<CreditCard> CreditCards => db.GetCollection<CreditCard>("CreditCards");
     }
 }
