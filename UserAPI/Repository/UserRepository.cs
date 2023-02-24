@@ -1,4 +1,6 @@
-﻿using MongoDB.Driver;
+﻿using Amazon.Runtime.Internal;
+using Microsoft.AspNetCore.Mvc;
+using MongoDB.Driver;
 using UserAPI.Models;
 
 namespace UserAPI.Repository
@@ -29,11 +31,6 @@ namespace UserAPI.Repository
 
         public Cred ResetPassword(string email)
         {
-            /*var filter = Builders<User>.Filter.Where(x => x.Email == email);
-            var update = Builders<User>.Update
-                .Set(x => x.Password, user.Password);
-            db.Users.UpdateOne(filter, update);*/
-
             Cred c = new Cred();
             var filter = Builders<User>.Filter.Where(x => x.Email == email);
             c.Email = email;
@@ -42,6 +39,25 @@ namespace UserAPI.Repository
                 .Set(x => x.Password, c.Password);
             db.Users.UpdateOne(filter, update);
             return c;
+        }
+
+        public void UpdateProfilePic(string email, string picture)
+        {
+            var filter = Builders<User>.Filter.Where(x => x.Email == email);
+            if (picture != null)
+            {
+                var update = Builders<User>.Update
+                .Set(x => x.ProfilePic, picture);
+                db.Users.UpdateOne(filter, update);
+            }
+            else
+            {
+                // Need to save a default profile pic and put the naming below
+                picture = "/Resources/Images/abc.jpg";
+                var update = Builders<User>.Update
+                .Set(x => x.ProfilePic, picture);
+                db.Users.UpdateOne(filter, update);
+            }
         }
 
         public void UpdateUser(string email, User user)
@@ -54,7 +70,6 @@ namespace UserAPI.Repository
                 .Set(x => x.Phone, user.Phone)
                 .Set(x => x.Gender, user.Gender)
                 .Set(x => x.DateOfBirth, user.DateOfBirth);
-                //.Set(x => x.ProfilePic, user.ProfilePic);
             db.Users.UpdateOne(filter, update);
         }
     }

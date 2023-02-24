@@ -37,5 +37,13 @@ namespace EmailAPI.Controllers
             service.BlockedEmail(email);
             return Ok(new { message = "Blocked Email sent successfully" });
         }
+
+        // To send unblocked email
+        [HttpPost("unblocked")]
+        public IActionResult UnblockedEmail(string email)
+        {
+            service.UnblockedEmail(email);
+            return Ok(new { message = "Unblocked Email sent successfully" });
+        }
     }
 }

@@ -748,5 +748,24 @@ namespace EmailAPI.Services
 			smtp.Send(registeremail);
 			smtp.Disconnect(true);
 		}
-	}
+
+		// Need to input HTML
+        public void UnblockedEmail(string email)
+        {
+            var unblockedemail = new MimeMessage();
+            unblockedemail.From.Add(MailboxAddress.Parse("transportapigroup2@gmail.com"));
+            unblockedemail.To.Add(MailboxAddress.Parse(email));
+            unblockedemail.Subject = "Your Account Has Been Unblocked";
+			unblockedemail.Body = new TextPart(MimeKit.Text.TextFormat.Html)
+			{
+
+			};
+
+            using var smtp = new SmtpClient();
+            smtp.Connect("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
+            smtp.Authenticate("transportapigroup2@gmail.com", "tbfpagdwhkksrhgf");
+            smtp.Send(unblockedemail);
+            smtp.Disconnect(true);
+        }
+    }
 }
