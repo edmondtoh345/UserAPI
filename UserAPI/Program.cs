@@ -1,5 +1,7 @@
 using Consul;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http.Features;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using UserAPI.Models;
@@ -13,6 +15,14 @@ namespace UserAPI
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            // To configure service for uploading Profile Pic
+            builder.Services.Configure<FormOptions>(o =>
+            {
+                o.ValueLengthLimit = int.MaxValue;
+                o.MultipartBodyLengthLimit = int.MaxValue;
+                o.MemoryBufferThreshold = int.MaxValue;
+            });
 
             // Add services to the container.
 
@@ -82,6 +92,14 @@ namespace UserAPI
             app.UseCors("MyCorsPolicy");
             app.UseAuthentication().UseAuthorization();
             
+            // To add middleware for uploading Profile Pic
+            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
+                RequestPath = new PathString("/Resources")
+            });
+
             app.MapControllers();
 
             app.Run();

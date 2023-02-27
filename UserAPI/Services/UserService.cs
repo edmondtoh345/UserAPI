@@ -43,6 +43,11 @@ namespace UserAPI.Services
             return repo.ResetPassword(email);
         }
 
+        public void UpdateProfilePic(string email, string picture)
+        {
+            repo.UpdateProfilePic(email, picture);
+        }
+
         public void UpdateUser(string email, User user)
         {
             repo.UpdateUser(email, user);

@@ -13,7 +13,7 @@ namespace UserAPI.Models
         public string Phone { get; set; }
         public string Gender { get; set; }
         public DateTime DateOfBirth { get; set; }
-        // public string? ProfilePic { get; set; }
+        public string? ProfilePic { get; set; } // = "/Resources/Images/.jpg"
         public string? Role { get; set; } = "User";
         public bool? IsBlocked { get; set; } = false;
     }

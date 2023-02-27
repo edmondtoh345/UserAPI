@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net.Http.Headers;
 using System.Text;
 using UserAPI.Filters;
 using UserAPI.Models;
@@ -65,11 +66,52 @@ namespace UserAPI.Controllers
 
         // For User and Admin to update user details
         // [Authorize(Roles = "User, Admin")]
-        [HttpPut("update/{UserEmail}")]
+        [HttpPut("updatedetails/{UserEmail}")]
         public IActionResult UpdateUser(string UserEmail, User user)
         {
             service.UpdateUser(UserEmail, user);
             return Ok(new { message = "User details updated successfully!" });
+        }
+
+        // For User to upload profile pic (but not updated)
+        [HttpPost("profilepic"), DisableRequestSizeLimit]
+        public async Task<IActionResult> Upload()
+        {
+            try
+            {
+                var formCollection = await Request.ReadFormAsync();
+                var file = formCollection.Files.First();
+                var folderName = Path.Combine("Resources", "Images");
+                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+                if (file.Length > 0)
+                {
+                    var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    var fullPath = Path.Combine(pathToSave, fileName);
+                    var dbPath = Path.Combine(folderName, fileName);
+                    using (var stream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                    }
+                    return Ok(new { dbPath });
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = $"Internal server error: {ex}" });
+            }
+        }
+
+        // For User to update profile pic (in conjunction with upload profile pic)
+        // [Authorize(Roles = "User, Admin")]
+        [HttpPut("profilepic/{UserEmail}")]
+        public IActionResult UpdateProfilePic(string UserEmail, string picture)
+        {
+            service.UpdateProfilePic(UserEmail, picture);
+            return Ok(new { message = "User profile picture updated successfully!" });
         }
 
         // For User to reset password
@@ -81,11 +123,13 @@ namespace UserAPI.Controllers
             return Ok(new { message = $"New password has been sent to {UserEmail}." });
         }
 
+
         // The below codes are for Administrator functions
+
 
         // For Admin to block user
         // [Authorize(Roles = "Admin")]
-        [HttpPost("block/{UserEmail}")]
+        [HttpPut("admin/block/{UserEmail}")]
         public IActionResult BlockUser(string UserEmail, User user)
         {
             admin.BlockUser(UserEmail, user);
@@ -94,7 +138,7 @@ namespace UserAPI.Controllers
 
         // For Admin to delete user
         // [Authorize(Roles = "Admin")]
-        [HttpDelete("{UserEmail}")]
+        [HttpDelete("admin/delete/{UserEmail}")]
         public IActionResult DeleteUser(string UserEmail)
         {
             admin.DeleteUser(UserEmail);
@@ -103,7 +147,7 @@ namespace UserAPI.Controllers
 
         // For Admin to get user details by email
         // [Authorize(Roles = "Admin")]
-        [HttpGet("byemail/{UserEmail}")]
+        [HttpGet("admin/byemail/{UserEmail}")]
         public IActionResult GetUserByEmail(string UserEmail)
         {
             return Ok(admin.GetUserByEmail(UserEmail));
@@ -112,7 +156,7 @@ namespace UserAPI.Controllers
         // For Admin to get all users
         // [Authorize(Roles = "Admin")]
         // [Authorize] // This is for testing purpose
-        [HttpGet("users")]
+        [HttpGet("admin/allusers")]
         public IActionResult GetAllUsers()
         {
             return Ok(admin.GetUsers());
