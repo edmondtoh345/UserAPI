@@ -52,5 +52,10 @@ namespace UserAPI.Services
         {
             repo.UpdateUser(email, user);
         }
+
+        public User GetUserByEmail(string email)
+        {
+            return repo.GetUserByEmail(email);
+        }
     }
 }

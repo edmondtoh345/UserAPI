@@ -43,5 +43,14 @@ namespace UserAPI.Services
         {
             return repo.GetUsers();
         }
+
+        public void UnBlockUser(string email, User user)
+        {
+            if (repo.GetUserByEmail(email) == null)
+            {
+                throw new UserNotFoundException($"User with Email: {email} does not exists!");
+            }
+            repo.UnBlockUser(email, user);
+        }
     }
 }

@@ -1,6 +1,4 @@
-﻿using Amazon.Runtime.Internal;
-using Microsoft.AspNetCore.Mvc;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 using UserAPI.Models;
 
 namespace UserAPI.Repository
@@ -33,7 +31,7 @@ namespace UserAPI.Repository
         {
             Cred c = new Cred();
             var filter = Builders<User>.Filter.Where(x => x.Email == email);
-            c.Email = email;
+            //c.Email = email;
             c.Password = Guid.NewGuid().ToString().Substring(0,13);
             var update = Builders<User>.Update
                 .Set(x => x.Password, c.Password);
@@ -53,7 +51,7 @@ namespace UserAPI.Repository
             else
             {
                 // Need to save a default profile pic and put the naming below
-                picture = "/Resources/Images/abc.jpg";
+                picture = "/Resources/Images/Default/Default_Profile_Pic.png";
                 var update = Builders<User>.Update
                 .Set(x => x.ProfilePic, picture);
                 db.Users.UpdateOne(filter, update);

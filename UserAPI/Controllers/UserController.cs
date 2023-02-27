@@ -4,8 +4,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json;
 using UserAPI.Filters;
 using UserAPI.Models;
 using UserAPI.Services;
@@ -29,16 +31,31 @@ namespace UserAPI.Controllers
             this.authenticator = authenticator;
         }
 
+        // DONE
         // For User to register
         [HttpPost("register")]
-        public IActionResult Register(User user)
+        public async Task<IActionResult> Register(User user)
         {
             service.Register(user);
-            // var message = JsonConvert.SerializeObject("message")
-            
-            return StatusCode(201, new {message="User registered successfully!", status ="201"});
+            var em = user.Email;
+
+            using (var httpClient = new HttpClient())
+            {
+                var requestData = new { email = em };
+                var requestJson = JsonSerializer.Serialize(requestData);
+                var requestContent = new StringContent(requestJson, System.Text.Encoding.UTF8, "application/json");
+
+                var response = await httpClient.PostAsync($"https://localhost:7202/api/Email/registered?email={em}", requestContent);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return StatusCode((int)response.StatusCode);
+                }
+            }
+            return StatusCode(201, new { message = "User registered successfully!", status = "201" });
         }
 
+        //DONE
         // For User and Admin to login
         // [Authorize(Roles = "User, Admin")]
         [HttpPost("login")]
@@ -115,11 +132,25 @@ namespace UserAPI.Controllers
         }
 
         // For User to reset password
-        // [Authorize(Roles = "User")]
         [HttpPut("resetpassword")]
-        public IActionResult ResetPassword(string UserEmail)
+        public async Task<IActionResult> ResetPassword(string UserEmail)
         {
             service.ResetPassword(UserEmail);
+            var pw = service.GetUserByEmail(UserEmail).Password;
+            
+            using (var httpClient = new HttpClient())
+            {
+                var requestData = new { email = UserEmail, password = pw };
+                var requestJson = JsonSerializer.Serialize(requestData);
+                var requestContent = new StringContent(requestJson, System.Text.Encoding.UTF8, "application/json");
+
+                var response = await httpClient.PostAsync($"https://localhost:7202/api/Email/newpassword?email={UserEmail}&password={pw}", requestContent);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return StatusCode((int)response.StatusCode);
+                }
+            }
             return Ok(new { message = $"New password has been sent to {UserEmail}." });
         }
 
@@ -130,10 +161,47 @@ namespace UserAPI.Controllers
         // For Admin to block user
         // [Authorize(Roles = "Admin")]
         [HttpPut("admin/block/{UserEmail}")]
-        public IActionResult BlockUser(string UserEmail, User user)
+        public async Task<IActionResult> BlockUser(string UserEmail, User user)
         {
             admin.BlockUser(UserEmail, user);
+
+            using (var httpClient = new HttpClient())
+            {
+                var requestData = new { email = UserEmail };
+                var requestJson = JsonSerializer.Serialize(requestData);
+                var requestContent = new StringContent(requestJson, System.Text.Encoding.UTF8, "application/json");
+
+                var response = await httpClient.PostAsync($"https://localhost:7202/api/Email/blocked?email={UserEmail}", requestContent);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return StatusCode((int)response.StatusCode);
+                }
+            }
             return Ok(new { message = $"User with Email: {UserEmail} has been blocked successfully!" });
+        }
+
+        // For Admin to unblock user
+        // [Authorize(Roles = "Admin")]
+        [HttpPut("admin/unblock/{UserEmail}")]
+        public async Task<IActionResult> UnBlockUser(string UserEmail, User user)
+        {
+            admin.UnBlockUser(UserEmail, user);
+
+            using (var httpClient = new HttpClient())
+            {
+                var requestData = new { email = UserEmail };
+                var requestJson = JsonSerializer.Serialize(requestData);
+                var requestContent = new StringContent(requestJson, System.Text.Encoding.UTF8, "application/json");
+
+                var response = await httpClient.PostAsync($"https://localhost:7202/api/Email/unblocked?email={UserEmail}", requestContent);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return StatusCode((int)response.StatusCode);
+                }
+            }
+            return Ok(new { message = $"User with Email: {UserEmail} has been unblocked successfully!" });
         }
 
         // For Admin to delete user
@@ -145,7 +213,7 @@ namespace UserAPI.Controllers
             return Ok(new { message = $"User with Email: {UserEmail} deleted successfully!" });
         }
 
-        // For Admin to get user details by email
+        // For User and Admin to get user details by email
         // [Authorize(Roles = "Admin")]
         [HttpGet("admin/byemail/{UserEmail}")]
         public IActionResult GetUserByEmail(string UserEmail)

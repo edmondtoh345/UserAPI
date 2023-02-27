@@ -1,15 +1,26 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MongoDB.Driver;
 
 namespace FavouriteAPI.Models
 {
-    public class DataContext: DbContext
+    public class DataContext
     {
-        public DataContext(DbContextOptions options) : base(options) 
+        MongoClient client;
+        IMongoDatabase db;
+        public DataContext()
         {
-            Database.EnsureCreated();
+            var con = Environment.GetEnvironmentVariable("Mongo_DB");
+            if (con == null)
+            {
+                client = new MongoClient("mongodb://localhost:27017");
+            }
+            else
+            {
+                client = new MongoClient(con);
+            }
+            db = client.GetDatabase("FavouriteDB");
         }
 
-        public DbSet<Favourite> Favourites { get; set; }
+        public IMongoCollection<Favourite> Favourites => db.GetCollection<Favourite>("Favourites");
     }
 }
 

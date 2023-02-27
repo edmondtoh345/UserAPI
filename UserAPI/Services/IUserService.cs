@@ -9,5 +9,6 @@ namespace UserAPI.Services
         void UpdateUser (string email, User user);
         void UpdateProfilePic(string email, string picture);
         Cred ResetPassword (string email);
+        User GetUserByEmail(string email);
     }
 }

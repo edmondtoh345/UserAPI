@@ -1,6 +1,7 @@
 {
   "Routes": [
     {
+      // For User API
       "UseServiceDiscovery": true,
       "DownstreamPathTemplate": "/api/user",
       "DownstreamScheme": "https",
@@ -10,6 +11,32 @@
       },
       "UpstreamPathTemplate": "/api/user",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+    },
+
+    {
+      // For Favourite API
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/favourite",
+      "DownstreamScheme": "https",
+      "ServiceName": "FavouriteAPI",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "UpstreamPathTemplate": "/api/favourite",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+    },
+
+    {
+      // For Email API
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/email",
+      "DownstreamScheme": "https",
+      "ServiceName": "EmailAPI",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "UpstreamPathTemplate": "/api/email",
+      "UpstreamHttpMethod": [ "POST" ]
     }
   ]
 }

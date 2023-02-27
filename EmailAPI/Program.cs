@@ -1,3 +1,4 @@
+using Consul;
 using EmailAPI.Services;
 
 namespace EmailAPI
@@ -17,7 +18,18 @@ namespace EmailAPI
 
             builder.Services.AddScoped<IEmailService, EmailService>();
 
+            builder.Services.AddSingleton<IConsulClient, ConsulClient>(p => new ConsulClient(consulConfig =>
+            {
+                consulConfig.Address = new System.Uri(builder.Configuration["ConsulConfig:ConsulAddress"]);
+            }));
+
+            // CORS Policy
+            builder.Services.AddCors(options => options.AddPolicy("MyCorsPolicy", policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));
+
             var app = builder.Build();
+
+            // For Consul
+            app.UseConsul(builder.Configuration);
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -28,8 +40,9 @@ namespace EmailAPI
 
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+            app.UseCors("MyCorsPolicy");
 
+            app.UseAuthorization();
 
             app.MapControllers();
 

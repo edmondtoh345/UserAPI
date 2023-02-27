@@ -3,6 +3,9 @@ using FavouriteAPI.Models;
 using FavouriteAPI.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace FavouriteAPI.Controllers
 {
@@ -11,13 +14,13 @@ namespace FavouriteAPI.Controllers
     [AppException]
     public class FavouriteController : ControllerBase
     {
-        private readonly IFavouriteService service;
-        public FavouriteController(IFavouriteService service)
+        private readonly DataContext db;
+        public FavouriteController(DataContext db)
         {
-            this.service = service;
+            this.db = db;
         }
 
-        [HttpGet("favourites/{UserEmail}")]
+        /*[HttpGet("favourites/{UserEmail}")]
         public ActionResult GetFavourites(string UserEmail)
         {
             return Ok(service.GetUserFavourites(UserEmail));
@@ -42,6 +45,22 @@ namespace FavouriteAPI.Controllers
         {
             service.UpdateFav(UserEmail, id, Fav);
             return Ok(new { message = "Favourite updated successfully" });
+        }*/
+
+        [HttpPost]
+        public IActionResult Post(Object doc)
+        {
+            var document = BsonSerializer.Deserialize<Favourite>(BsonDocument.Parse(doc.ToString()));
+            db.Favourites.InsertOne(document);
+            return Ok();
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(string id)
+        {
+            var filter = Builders<Favourite>.Filter.Where(x => x.FavouriteID == id);
+            db.Favourites.DeleteOne(filter);
+            return Ok();
         }
     }
 }

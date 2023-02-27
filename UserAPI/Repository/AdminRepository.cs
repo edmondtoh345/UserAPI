@@ -15,7 +15,7 @@ namespace UserAPI.Repository
         {
             var filter = Builders<User>.Filter.Where(x => x.Email == email);
             var update = Builders<User>.Update
-                .Set(x => true, user.IsBlocked);
+                .Set(x => x.IsBlocked, user.IsBlocked = true);
             db.Users.UpdateOne(filter, update);
         }
 
@@ -33,6 +33,14 @@ namespace UserAPI.Repository
         public List<User> GetUsers()
         {
             return db.Users.Find(user => true).ToList(); ;
+        }
+
+        public void UnBlockUser(string email, User user)
+        {
+            var filter = Builders<User>.Filter.Where(x => x.Email == email);
+            var update = Builders<User>.Update
+                .Set(x => x.IsBlocked, user.IsBlocked = false);
+            db.Users.UpdateOne(filter, update);
         }
     }
 }

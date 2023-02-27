@@ -1,7 +1,7 @@
 ﻿using FavouriteAPI.Models;
-using Microsoft.EntityFrameworkCore;
+using MongoDB.Driver;
 
-namespace FavouriteAPI.Repository
+/*namespace FavouriteAPI.Repository
 {
     public class FavouriteRepository : IFavouriteRepository
     {
@@ -11,37 +11,35 @@ namespace FavouriteAPI.Repository
             this.db = db;
         }
 
-        public int AddFav(string email, Favourite fav)
+        public void AddFav(string email, Favourite fav)
         {
-            db.Favourites.Add(fav);
-            return db.SaveChanges();
+            db.Favourites.InsertOne(fav);
         }
 
-        public int DeleteFav(int id)
+        public void DeleteFav(int id)
         {
-            var d = db.Favourites.Find(id);
-            db.Favourites.Remove(d);
-            return db.SaveChanges();
+            var filter = Builders<Favourite>.Filter.Where(x => x.FavouriteID == id);
+            db.Favourites.DeleteOne(filter);
         }
 
         public Favourite GetFavByID(int id)
         {
-            return db.Favourites.Find(id);
+            return db.Favourites.Find(x => x.FavouriteID == id).FirstOrDefault();
         }
 
         public List<Favourite> GetUserFavourites(string email)
         {
-            return db.Favourites.Where(x => x.Email == email).ToList();
+            return db.Favourites.Find(x => x.Email == email).ToList();
         }
 
-        public int UpdateFav(string email, int id, Favourite fav)
+        public void UpdateFav(string email, int id, Favourite fav)
         {
-            var u = db.Favourites.Find(id);
-            u.FavName = fav.FavName;
-            u.FavSource = fav.FavSource;
-            u.FavDestination = fav.FavDestination;
-            db.Entry<Favourite>(u).State = EntityState.Modified;
-            return db.SaveChanges();
+            var filter = Builders<Favourite>.Filter.Where(x => x.FavouriteID == id);
+            var update = Builders<Favourite>.Update
+                .Set(x => x.FavName, fav.FavName)
+                .Set(x => x.FavSource, fav.FavSource)
+                .Set(x => x.FavDestination, fav.FavDestination);
+            db.Favourites.UpdateOne(filter, update);
         }
     }
-}
+}*/

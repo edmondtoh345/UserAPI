@@ -6,8 +6,8 @@ namespace FavouriteAPI.Repository
     {
         List<Favourite> GetUserFavourites (string email);
         Favourite GetFavByID (int id);
-        int AddFav (string email, Favourite fav);
-        int UpdateFav (string email, int id, Favourite fav);
-        int DeleteFav (int id);
+        void AddFav (string email, Favourite fav);
+        void UpdateFav (string email, int id, Favourite fav);
+        void DeleteFav (int id);
     }
 }

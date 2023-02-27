@@ -3,7 +3,7 @@ using FavouriteAPI.Models;
 using FavouriteAPI.Repository;
 using System.Data;
 
-namespace FavouriteAPI.Services
+/*namespace FavouriteAPI.Services
 {
     public class FavouriteService : IFavouriteService
     {
@@ -13,7 +13,7 @@ namespace FavouriteAPI.Services
             this.repo = repo;
         }
 
-        public int AddFav(string email, Favourite fav)
+        public void AddFav(string email, Favourite fav)
         {
             if (repo.GetUserFavourites(email).Where(x => x.FavName == fav.FavName).Any())
             {
@@ -28,16 +28,16 @@ namespace FavouriteAPI.Services
             {
                 throw new FavAlreadyExistsException("Source and destination are the same!");
             }
-            return repo.AddFav(email, fav);
+            repo.AddFav(email, fav);
         }
 
-        public int DeleteFav(int id)
+        public void DeleteFav(int id)
         {
             if (repo.GetFavByID(id) == null)
             {
                 throw new FavNotFoundException($"Favourite with ID: {id} does not exists!");
             }
-            return repo.DeleteFav(id);
+            repo.DeleteFav(id);
         }
 
         public List<Favourite> GetUserFavourites(string email)
@@ -45,7 +45,7 @@ namespace FavouriteAPI.Services
             return repo.GetUserFavourites(email);
         }
 
-        public int UpdateFav(string email, int id, Favourite fav)
+        public void UpdateFav(string email, int id, Favourite fav)
         {
             if(repo.GetUserFavourites(email).Where(x => x.FavName == fav.FavName).Any())
             {
@@ -60,7 +60,7 @@ namespace FavouriteAPI.Services
             {
                 throw new FavAlreadyExistsException("Source and destination are the same!");
             }
-            return repo.UpdateFav(email, id, fav);
+            repo.UpdateFav(email, id, fav);
         }
     }
-}
+}*/

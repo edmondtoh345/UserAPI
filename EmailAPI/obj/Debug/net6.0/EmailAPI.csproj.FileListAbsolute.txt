@@ -33,3 +33,5 @@ D:\Backend - Capstone Project\Backend - CapstoneAPI\EmailAPI\obj\Debug\net6.0\re
 D:\Backend - Capstone Project\Backend - CapstoneAPI\EmailAPI\obj\Debug\net6.0\EmailAPI.pdb
 D:\Backend - Capstone Project\Backend - CapstoneAPI\EmailAPI\obj\Debug\net6.0\EmailAPI.genruntimeconfig.cache
 D:\Backend - Capstone Project\Backend - CapstoneAPI\EmailAPI\obj\Debug\net6.0\ref\EmailAPI.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\EmailAPI\bin\Debug\net6.0\Consul.dll
+D:\Backend - Capstone Project\Backend - CapstoneAPI\EmailAPI\bin\Debug\net6.0\Newtonsoft.Json.dll
